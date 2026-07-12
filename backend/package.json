@@ -1,0 +1,51 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js",
+    "start": "node index.js",
+    "build": "prisma generate",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prisma:generate": "prisma generate",
+    "patch:prisma": "node scripts/patch-prisma-wasm-loader.cjs",
+    "prisma:migrate": "prisma db push",
+    "prisma:push": "prisma db push",
+    "prisma:studio": "prisma studio",
+    "init:env": "node scripts/init-env.cjs",
+    "create:admin": "node scripts/create-admin.js",
+    "postinstall": "prisma generate"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@neondatabase/serverless": "^1.0.2",
+    "@prisma/adapter-mariadb": "^7.8.0",
+    "@prisma/adapter-neon": "^7.4.0",
+    "@prisma/adapter-pg": "^7.4.0",
+    "@prisma/client": "^7.4.0",
+    "axios": "^1.14.0",
+    "basic-ftp": "^6.0.1",
+    "bcrypt": "^6.0.0",
+    "cloudinary": "^2.9.0",
+    "compression": "^1.8.1",
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "firebase-admin": "^13.6.1",
+    "jsonwebtoken": "^9.0.2",
+    "mariadb": "^3.5.3",
+    "multer": "^1.4.5-lts.1",
+    "pg": "^8.16.3",
+    "prisma": "^7.4.0",
+    "ws": "^8.18.3",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "cross-env": "^10.1.0",
+    "nodemon": "^3.1.10"
+  }
+}

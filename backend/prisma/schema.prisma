@@ -1,0 +1,463 @@
+generator client {
+  provider   = "prisma-client-js"
+  engineType = "client"
+  output     = "../../node_modules/.prisma/client"
+}
+
+datasource db {
+  provider = "mysql"
+}
+
+model User {
+  id            String              @id @default(cuid())
+  email         String              @unique
+  name          String?
+  passwordHash  String?
+  phoneNumber   String?             @unique
+  createdAt     DateTime            @default(now())
+  updatedAt     DateTime            @updatedAt
+  role          String              @default("CUSTOMER")
+  resetTokens   PasswordResetToken?
+  reviews       Review[]
+  orders        Order[]
+  orderRequests OrderRequest[]
+}
+
+model Collection {
+  id              String                @id @default(cuid())
+  title           String
+  handle          String                @unique
+  descriptionHtml String?
+  imageUrl        String?
+  type            CollectionType        @default(MANUAL)
+  rules           Json?
+  templateSuffix  String?
+  publishedAt     DateTime?
+  parentId        String?
+  createdAt       DateTime              @default(now())
+  updatedAt       DateTime              @updatedAt
+  products        ProductCollection[]
+  metafields      CollectionMetafield[]
+  parent          Collection?           @relation("CollectionHierarchy", fields: [parentId], references: [id])
+  children        Collection[]          @relation("CollectionHierarchy")
+
+  @@index([title])
+  @@index([handle])
+  @@index([parentId])
+}
+
+model Product {
+  id                   String        @id @default(cuid())
+  externalNumericId    BigInt        @unique @default(autoincrement())
+  title                String
+  handle               String        @unique
+  descriptionHtml      String?
+  status               ProductStatus @default(DRAFT)
+  vendor               String?
+  productType          String?
+  category             String?
+  categoryTaxonomyId   String?
+  apparelType          ApparelType?
+  templateSuffix       String?
+  tags                 Json          @default("[]")
+  subscriptionsEnabled Boolean       @default(false)
+  publishedAt          DateTime?
+  createdAt            DateTime      @default(now())
+  updatedAt            DateTime      @updatedAt
+
+  collections  ProductCollection[]
+  media        ProductMedia[]
+  options      ProductOption[]
+  variants     ProductVariant[]
+  publications ProductPublication[]
+  metafields   ProductMetafield[]
+  reviews      Review[]
+
+  @@index([title])
+  @@index([status])
+  @@index([productType])
+  @@index([category])
+  @@index([vendor])
+  @@index([createdAt])
+  @@index([publishedAt])
+}
+
+model ProductCollection {
+  productId    String
+  collectionId String
+  position     Int?
+  createdAt    DateTime   @default(now())
+  product      Product    @relation(fields: [productId], references: [id], onDelete: Cascade)
+  collection   Collection @relation(fields: [collectionId], references: [id], onDelete: Cascade)
+
+  @@id([productId, collectionId])
+  @@index([collectionId])
+}
+
+model ProductMedia {
+  id        String    @id @default(cuid())
+  productId String
+  type      MediaType @default(IMAGE)
+  url       String
+  alt       String?
+  position  Int?
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+
+  product       Product          @relation(fields: [productId], references: [id], onDelete: Cascade)
+  variantImages ProductVariant[] @relation("VariantImage")
+
+  @@index([productId])
+}
+
+model ProductOption {
+  id        String   @id @default(cuid())
+  productId String
+  name      String
+  position  Int
+  values    Json     @default("[]")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  product Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  @@unique([productId, name])
+  @@index([productId])
+}
+
+model ProductVariant {
+  id                   String          @id @default(cuid())
+  externalNumericId    BigInt          @unique @default(autoincrement())
+  productId            String
+  title                String
+  position             Int?
+  sku                  String?
+  barcode              String?
+  price                Decimal?        @db.Decimal(10, 2)
+  compareAtPrice       Decimal?        @db.Decimal(10, 2)
+  costPerItem          Decimal?        @db.Decimal(10, 2)
+  unitPrice            Decimal?        @db.Decimal(10, 2)
+  unitPriceMeasurement Json?
+  taxable              Boolean         @default(true)
+  trackInventory       Boolean         @default(true)
+  inventoryPolicy      InventoryPolicy @default(DENY)
+  requiresShipping     Boolean         @default(true)
+  weight               Decimal?        @db.Decimal(10, 3)
+  weightUnit           WeightUnit?
+  originCountryCode    String?
+  hsCode               String?
+  optionValues         Json?
+  imageId              String?
+  createdAt            DateTime        @default(now())
+  updatedAt            DateTime        @updatedAt
+
+  product         Product            @relation(fields: [productId], references: [id], onDelete: Cascade)
+  image           ProductMedia?      @relation("VariantImage", fields: [imageId], references: [id])
+  inventoryLevels InventoryLevel[]
+  metafields      VariantMetafield[]
+
+  @@index([productId])
+  @@index([sku])
+  @@index([price])
+}
+
+model Location {
+  id        String   @id @default(cuid())
+  name      String
+  address   Json?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  inventoryLevels InventoryLevel[]
+}
+
+model InventoryLevel {
+  id          String   @id @default(cuid())
+  variantId   String
+  locationId  String
+  available   Int      @default(0)
+  onHand      Int      @default(0)
+  committed   Int      @default(0)
+  unavailable Int      @default(0)
+  updatedAt   DateTime @updatedAt
+
+  variant  ProductVariant @relation(fields: [variantId], references: [id], onDelete: Cascade)
+  location Location       @relation(fields: [locationId], references: [id], onDelete: Cascade)
+
+  @@unique([variantId, locationId])
+  @@index([locationId])
+}
+
+model SalesChannel {
+  id        String           @id @default(cuid())
+  name      String           @unique
+  type      SalesChannelType @default(CUSTOM)
+  createdAt DateTime         @default(now())
+  updatedAt DateTime         @updatedAt
+
+  publications ProductPublication[]
+}
+
+model ProductPublication {
+  productId      String
+  salesChannelId String
+  isPublished    Boolean      @default(true)
+  publishedAt    DateTime?
+  product        Product      @relation(fields: [productId], references: [id], onDelete: Cascade)
+  salesChannel   SalesChannel @relation(fields: [salesChannelId], references: [id], onDelete: Cascade)
+
+  @@id([productId, salesChannelId])
+  @@index([salesChannelId])
+}
+
+model Metaobject {
+  id          String    @id @default(cuid())
+  type        String
+  handle      String?
+  fields      Json
+  publishedAt DateTime?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  @@index([type])
+  @@index([handle])
+}
+
+model ProductMetafield {
+  id          String              @id @default(cuid())
+  productId   String
+  set         ProductMetafieldSet @default(PRODUCT)
+  namespace   String
+  key         String
+  type        String
+  value       Json
+  description String?
+  createdAt   DateTime            @default(now())
+  updatedAt   DateTime            @updatedAt
+
+  product Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  @@unique([productId, namespace, key])
+  @@index([productId])
+}
+
+model VariantMetafield {
+  id          String   @id @default(cuid())
+  variantId   String
+  namespace   String
+  key         String
+  type        String
+  value       Json
+  description String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  variant ProductVariant @relation(fields: [variantId], references: [id], onDelete: Cascade)
+
+  @@unique([variantId, namespace, key])
+  @@index([variantId])
+}
+
+model CollectionMetafield {
+  id           String   @id @default(cuid())
+  collectionId String
+  namespace    String
+  key          String
+  type         String
+  value        Json
+  description  String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  collection Collection @relation(fields: [collectionId], references: [id], onDelete: Cascade)
+
+  @@unique([collectionId, namespace, key])
+  @@index([collectionId])
+}
+
+model Review {
+  id        String        @id @default(cuid())
+  rating    Int
+  title     String?
+  comment   String?
+  status    ReviewStatus  @default(PENDING)
+  productId String
+  userId    String
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
+  product   Product       @relation(fields: [productId], references: [id], onDelete: Cascade)
+  user      User          @relation(fields: [userId], references: [id])
+  media     ReviewMedia[]
+
+  @@index([productId, status])
+  @@index([userId])
+}
+
+model ReviewMedia {
+  id        String   @id @default(cuid())
+  url       String
+  reviewId  String
+  createdAt DateTime @default(now())
+  review    Review   @relation(fields: [reviewId], references: [id], onDelete: Cascade)
+
+  @@index([reviewId])
+}
+
+model PasswordResetToken {
+  id        String   @id @default(cuid())
+  token     String   @unique
+  expiresAt DateTime
+  userId    String   @unique
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([token])
+}
+
+model Order {
+  id            String         @id @default(cuid())
+  number        String         @unique
+  userId        String?
+  status        OrderStatus    @default(PENDING)
+  paymentMethod String?
+  totals        Json
+  shipping      Json
+  items         Json
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+  user          User?          @relation(fields: [userId], references: [id])
+  requests      OrderRequest[]
+
+  @@index([userId])
+}
+
+model OrderRequest {
+  id                 String             @id @default(cuid())
+  orderId            String
+  userId             String
+  type               OrderRequestType
+  status             OrderRequestStatus @default(REQUESTED)
+  items              Json?
+  reason             String?
+  comments           String?
+  attachments        Json?
+  bankDetails        Json?
+  exchangePreference Json?
+  createdAt          DateTime           @default(now())
+  updatedAt          DateTime           @updatedAt
+  resolvedAt         DateTime?
+  order              Order              @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  user               User               @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([orderId])
+  @@index([userId, type])
+  @@index([status])
+}
+
+model Discount {
+  id          String       @id @default(cuid())
+  code        String       @unique
+  name        String?
+  description String?
+  type        DiscountType
+  value       Decimal      @db.Decimal(10, 2)
+  minSubtotal Decimal?     @db.Decimal(10, 2)
+  maxDiscount Decimal?     @db.Decimal(10, 2)
+  startsAt    DateTime?
+  endsAt      DateTime?
+  isActive    Boolean      @default(true)
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+
+  @@index([code])
+  @@index([isActive])
+  @@index([startsAt, endsAt])
+}
+
+enum CollectionType {
+  MANUAL
+  AUTOMATED
+}
+
+enum ProductStatus {
+  ACTIVE
+  DRAFT
+  ARCHIVED
+}
+
+enum MediaType {
+  IMAGE
+  VIDEO
+  MODEL_3D
+  EXTERNAL_VIDEO
+}
+
+enum WeightUnit {
+  GRAMS
+  KILOGRAMS
+  OUNCES
+  POUNDS
+}
+
+enum InventoryPolicy {
+  DENY
+  CONTINUE
+}
+
+enum SalesChannelType {
+  ONLINE_STORE
+  POS
+  APP
+  CUSTOM
+}
+
+enum ProductMetafieldSet {
+  CATEGORY
+  PRODUCT
+}
+
+enum ApparelType {
+  TOP
+  BOTTOM
+  SHOES
+  ACCESSORY
+  SET
+  OTHER
+}
+
+enum Role {
+  ADMIN
+  CUSTOMER
+  VENDOR
+}
+
+enum ReviewStatus {
+  PENDING
+  PUBLISHED
+  REJECTED
+}
+
+enum OrderStatus {
+  PENDING
+  PAID
+  FULFILLED
+  CANCELLED
+}
+
+enum OrderRequestType {
+  CANCEL
+  RETURN
+  EXCHANGE
+}
+
+enum OrderRequestStatus {
+  REQUESTED
+  APPROVED
+  REJECTED
+  COMPLETED
+}
+
+enum DiscountType {
+  FLAT
+  PERCENTAGE
+}

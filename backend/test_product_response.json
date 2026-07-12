@@ -1,0 +1,512 @@
+﻿{
+    "data":  {
+                 "id":  "cmlj06ftb0000kohy9ybagxly",
+                 "title":  "Weekend Knit Polo",
+                 "handle":  "weekend-knit-polo",
+                 "descriptionHtml":  "\u003cp\u003eSoft knit polo with a relaxed drape and breathable texture for off-duty styling.\u003c/p\u003e",
+                 "status":  "ACTIVE",
+                 "vendor":  "Aradhya",
+                 "productType":  "Knit",
+                 "category":  "Tops",
+                 "categoryTaxonomyId":  null,
+                 "apparelType":  "TOP",
+                 "templateSuffix":  null,
+                 "tags":  [
+                              "polo",
+                              "knit",
+                              "weekend",
+                              "new"
+                          ],
+                 "subscriptionsEnabled":  false,
+                 "publishedAt":  "2026-02-12T05:13:16.889Z",
+                 "createdAt":  "2026-02-12T05:13:16.943Z",
+                 "updatedAt":  "2026-02-12T05:13:16.943Z",
+                 "collections":  [
+                                     {
+                                         "id":  "cmlj03qdo0002swhysc3mrzq5",
+                                         "title":  "Tops",
+                                         "handle":  "tops",
+                                         "descriptionHtml":  "Shirts and tees.",
+                                         "imageUrl":  null,
+                                         "type":  "MANUAL",
+                                         "rules":  null,
+                                         "templateSuffix":  null,
+                                         "publishedAt":  null,
+                                         "parentId":  null,
+                                         "createdAt":  "2026-02-12T05:11:10.668Z",
+                                         "updatedAt":  "2026-02-12T05:11:10.668Z"
+                                     }
+                                 ],
+                 "media":  [
+                               {
+                                   "id":  "cmlj06h8q0001kohym4akw9qg",
+                                   "productId":  "cmlj06ftb0000kohy9ybagxly",
+                                   "type":  "IMAGE",
+                                   "url":  "/images/mk3.jpg",
+                                   "alt":  "Knit polo front",
+                                   "position":  0,
+                                   "createdAt":  "2026-02-12T05:13:18.420Z",
+                                   "updatedAt":  "2026-02-12T05:13:18.420Z"
+                               },
+                               {
+                                   "id":  "cmlj06h8q0002kohybbs8v6vo",
+                                   "productId":  "cmlj06ftb0000kohy9ybagxly",
+                                   "type":  "IMAGE",
+                                   "url":  "/images/mk4.jpg",
+                                   "alt":  "Knit polo detail",
+                                   "position":  1,
+                                   "createdAt":  "2026-02-12T05:13:18.420Z",
+                                   "updatedAt":  "2026-02-12T05:13:18.420Z"
+                               }
+                           ],
+                 "options":  [
+                                 {
+                                     "id":  "cmlj06i6t0003kohycp1k3hjn",
+                                     "productId":  "cmlj06ftb0000kohy9ybagxly",
+                                     "name":  "Size",
+                                     "position":  1,
+                                     "values":  [
+                                                    "S",
+                                                    "M",
+                                                    "L",
+                                                    "XL"
+                                                ],
+                                     "createdAt":  "2026-02-12T05:13:19.620Z",
+                                     "updatedAt":  "2026-02-12T05:13:19.620Z"
+                                 },
+                                 {
+                                     "id":  "cmlj06i6t0004kohyjm80pouv",
+                                     "productId":  "cmlj06ftb0000kohy9ybagxly",
+                                     "name":  "Color",
+                                     "position":  2,
+                                     "values":  [
+                                                    "White",
+                                                    "Blue"
+                                                ],
+                                     "createdAt":  "2026-02-12T05:13:19.620Z",
+                                     "updatedAt":  "2026-02-12T05:13:19.620Z"
+                                 }
+                             ],
+                 "variants":  [
+                                  {
+                                      "id":  "cmlj06j2v0005kohy3130bpo9",
+                                      "productId":  "cmlj06ftb0000kohy9ybagxly",
+                                      "title":  "S / White",
+                                      "position":  1,
+                                      "sku":  "KNIT-S-WHITE",
+                                      "barcode":  null,
+                                      "price":  "1399",
+                                      "compareAtPrice":  "1699",
+                                      "costPerItem":  null,
+                                      "unitPrice":  null,
+                                      "unitPriceMeasurement":  null,
+                                      "taxable":  true,
+                                      "trackInventory":  true,
+                                      "inventoryPolicy":  "DENY",
+                                      "requiresShipping":  true,
+                                      "weight":  null,
+                                      "weightUnit":  null,
+                                      "originCountryCode":  null,
+                                      "hsCode":  null,
+                                      "optionValues":  {
+                                                           "Size":  "S",
+                                                           "Color":  "White"
+                                                       },
+                                      "imageId":  null,
+                                      "createdAt":  "2026-02-12T05:13:21.175Z",
+                                      "updatedAt":  "2026-02-12T05:13:21.175Z",
+                                      "inventoryLevels":  [
+                                                              {
+                                                                  "id":  "cmlj06jp20006kohyoq0cv0rf",
+                                                                  "variantId":  "cmlj06j2v0005kohy3130bpo9",
+                                                                  "locationId":  "cmlj03vsg000dswhyv6rplt31",
+                                                                  "available":  10,
+                                                                  "onHand":  10,
+                                                                  "committed":  0,
+                                                                  "unavailable":  0,
+                                                                  "updatedAt":  "2026-02-12T05:13:21.974Z",
+                                                                  "location":  {
+                                                                                   "id":  "cmlj03vsg000dswhyv6rplt31",
+                                                                                   "name":  "Default",
+                                                                                   "address":  null,
+                                                                                   "createdAt":  "2026-02-12T05:11:17.680Z",
+                                                                                   "updatedAt":  "2026-02-12T05:11:17.680Z"
+                                                                               }
+                                                              }
+                                                          ],
+                                      "image":  null,
+                                      "metafields":  [
+
+                                                     ]
+                                  },
+                                  {
+                                      "id":  "cmlj06k0a0007kohy20g00qmm",
+                                      "productId":  "cmlj06ftb0000kohy9ybagxly",
+                                      "title":  "S / Blue",
+                                      "position":  2,
+                                      "sku":  "KNIT-S-BLUE",
+                                      "barcode":  null,
+                                      "price":  "1399",
+                                      "compareAtPrice":  "1699",
+                                      "costPerItem":  null,
+                                      "unitPrice":  null,
+                                      "unitPriceMeasurement":  null,
+                                      "taxable":  true,
+                                      "trackInventory":  true,
+                                      "inventoryPolicy":  "DENY",
+                                      "requiresShipping":  true,
+                                      "weight":  null,
+                                      "weightUnit":  null,
+                                      "originCountryCode":  null,
+                                      "hsCode":  null,
+                                      "optionValues":  {
+                                                           "Size":  "S",
+                                                           "Color":  "Blue"
+                                                       },
+                                      "imageId":  null,
+                                      "createdAt":  "2026-02-12T05:13:22.378Z",
+                                      "updatedAt":  "2026-02-12T05:13:22.378Z",
+                                      "inventoryLevels":  [
+                                                              {
+                                                                  "id":  "cmlj06kn20008kohyx5lpu9dj",
+                                                                  "variantId":  "cmlj06k0a0007kohy20g00qmm",
+                                                                  "locationId":  "cmlj03vsg000dswhyv6rplt31",
+                                                                  "available":  10,
+                                                                  "onHand":  10,
+                                                                  "committed":  0,
+                                                                  "unavailable":  0,
+                                                                  "updatedAt":  "2026-02-12T05:13:23.198Z",
+                                                                  "location":  {
+                                                                                   "id":  "cmlj03vsg000dswhyv6rplt31",
+                                                                                   "name":  "Default",
+                                                                                   "address":  null,
+                                                                                   "createdAt":  "2026-02-12T05:11:17.680Z",
+                                                                                   "updatedAt":  "2026-02-12T05:11:17.680Z"
+                                                                               }
+                                                              }
+                                                          ],
+                                      "image":  null,
+                                      "metafields":  [
+
+                                                     ]
+                                  },
+                                  {
+                                      "id":  "cmlj06kyi0009kohy70e8rnzx",
+                                      "productId":  "cmlj06ftb0000kohy9ybagxly",
+                                      "title":  "M / White",
+                                      "position":  3,
+                                      "sku":  "KNIT-M-WHITE",
+                                      "barcode":  null,
+                                      "price":  "1399",
+                                      "compareAtPrice":  "1699",
+                                      "costPerItem":  null,
+                                      "unitPrice":  null,
+                                      "unitPriceMeasurement":  null,
+                                      "taxable":  true,
+                                      "trackInventory":  true,
+                                      "inventoryPolicy":  "DENY",
+                                      "requiresShipping":  true,
+                                      "weight":  null,
+                                      "weightUnit":  null,
+                                      "originCountryCode":  null,
+                                      "hsCode":  null,
+                                      "optionValues":  {
+                                                           "Size":  "M",
+                                                           "Color":  "White"
+                                                       },
+                                      "imageId":  null,
+                                      "createdAt":  "2026-02-12T05:13:23.610Z",
+                                      "updatedAt":  "2026-02-12T05:13:23.610Z",
+                                      "inventoryLevels":  [
+                                                              {
+                                                                  "id":  "cmlj06liz000akohyta9sp0ch",
+                                                                  "variantId":  "cmlj06kyi0009kohy70e8rnzx",
+                                                                  "locationId":  "cmlj03vsg000dswhyv6rplt31",
+                                                                  "available":  10,
+                                                                  "onHand":  10,
+                                                                  "committed":  0,
+                                                                  "unavailable":  0,
+                                                                  "updatedAt":  "2026-02-12T05:13:24.346Z",
+                                                                  "location":  {
+                                                                                   "id":  "cmlj03vsg000dswhyv6rplt31",
+                                                                                   "name":  "Default",
+                                                                                   "address":  null,
+                                                                                   "createdAt":  "2026-02-12T05:11:17.680Z",
+                                                                                   "updatedAt":  "2026-02-12T05:11:17.680Z"
+                                                                               }
+                                                              }
+                                                          ],
+                                      "image":  null,
+                                      "metafields":  [
+
+                                                     ]
+                                  },
+                                  {
+                                      "id":  "cmlj06ltr000bkohywx3yo7xj",
+                                      "productId":  "cmlj06ftb0000kohy9ybagxly",
+                                      "title":  "M / Blue",
+                                      "position":  4,
+                                      "sku":  "KNIT-M-BLUE",
+                                      "barcode":  null,
+                                      "price":  "1399",
+                                      "compareAtPrice":  "1699",
+                                      "costPerItem":  null,
+                                      "unitPrice":  null,
+                                      "unitPriceMeasurement":  null,
+                                      "taxable":  true,
+                                      "trackInventory":  true,
+                                      "inventoryPolicy":  "DENY",
+                                      "requiresShipping":  true,
+                                      "weight":  null,
+                                      "weightUnit":  null,
+                                      "originCountryCode":  null,
+                                      "hsCode":  null,
+                                      "optionValues":  {
+                                                           "Size":  "M",
+                                                           "Color":  "Blue"
+                                                       },
+                                      "imageId":  null,
+                                      "createdAt":  "2026-02-12T05:13:24.735Z",
+                                      "updatedAt":  "2026-02-12T05:13:24.735Z",
+                                      "inventoryLevels":  [
+                                                              {
+                                                                  "id":  "cmlj06mgi000ckohyzv8r2dl9",
+                                                                  "variantId":  "cmlj06ltr000bkohywx3yo7xj",
+                                                                  "locationId":  "cmlj03vsg000dswhyv6rplt31",
+                                                                  "available":  10,
+                                                                  "onHand":  10,
+                                                                  "committed":  0,
+                                                                  "unavailable":  0,
+                                                                  "updatedAt":  "2026-02-12T05:13:25.554Z",
+                                                                  "location":  {
+                                                                                   "id":  "cmlj03vsg000dswhyv6rplt31",
+                                                                                   "name":  "Default",
+                                                                                   "address":  null,
+                                                                                   "createdAt":  "2026-02-12T05:11:17.680Z",
+                                                                                   "updatedAt":  "2026-02-12T05:11:17.680Z"
+                                                                               }
+                                                              }
+                                                          ],
+                                      "image":  null,
+                                      "metafields":  [
+
+                                                     ]
+                                  },
+                                  {
+                                      "id":  "cmlj06mq7000dkohyno8gpina",
+                                      "productId":  "cmlj06ftb0000kohy9ybagxly",
+                                      "title":  "L / White",
+                                      "position":  5,
+                                      "sku":  "KNIT-L-WHITE",
+                                      "barcode":  null,
+                                      "price":  "1399",
+                                      "compareAtPrice":  "1699",
+                                      "costPerItem":  null,
+                                      "unitPrice":  null,
+                                      "unitPriceMeasurement":  null,
+                                      "taxable":  true,
+                                      "trackInventory":  true,
+                                      "inventoryPolicy":  "DENY",
+                                      "requiresShipping":  true,
+                                      "weight":  null,
+                                      "weightUnit":  null,
+                                      "originCountryCode":  null,
+                                      "hsCode":  null,
+                                      "optionValues":  {
+                                                           "Size":  "L",
+                                                           "Color":  "White"
+                                                       },
+                                      "imageId":  null,
+                                      "createdAt":  "2026-02-12T05:13:25.903Z",
+                                      "updatedAt":  "2026-02-12T05:13:25.903Z",
+                                      "inventoryLevels":  [
+                                                              {
+                                                                  "id":  "cmlj06n97000ekohytve4f05r",
+                                                                  "variantId":  "cmlj06mq7000dkohyno8gpina",
+                                                                  "locationId":  "cmlj03vsg000dswhyv6rplt31",
+                                                                  "available":  10,
+                                                                  "onHand":  10,
+                                                                  "committed":  0,
+                                                                  "unavailable":  0,
+                                                                  "updatedAt":  "2026-02-12T05:13:26.587Z",
+                                                                  "location":  {
+                                                                                   "id":  "cmlj03vsg000dswhyv6rplt31",
+                                                                                   "name":  "Default",
+                                                                                   "address":  null,
+                                                                                   "createdAt":  "2026-02-12T05:11:17.680Z",
+                                                                                   "updatedAt":  "2026-02-12T05:11:17.680Z"
+                                                                               }
+                                                              }
+                                                          ],
+                                      "image":  null,
+                                      "metafields":  [
+
+                                                     ]
+                                  },
+                                  {
+                                      "id":  "cmlj06ni9000fkohy9z84j49b",
+                                      "productId":  "cmlj06ftb0000kohy9ybagxly",
+                                      "title":  "L / Blue",
+                                      "position":  6,
+                                      "sku":  "KNIT-L-BLUE",
+                                      "barcode":  null,
+                                      "price":  "1399",
+                                      "compareAtPrice":  "1699",
+                                      "costPerItem":  null,
+                                      "unitPrice":  null,
+                                      "unitPriceMeasurement":  null,
+                                      "taxable":  true,
+                                      "trackInventory":  true,
+                                      "inventoryPolicy":  "DENY",
+                                      "requiresShipping":  true,
+                                      "weight":  null,
+                                      "weightUnit":  null,
+                                      "originCountryCode":  null,
+                                      "hsCode":  null,
+                                      "optionValues":  {
+                                                           "Size":  "L",
+                                                           "Color":  "Blue"
+                                                       },
+                                      "imageId":  null,
+                                      "createdAt":  "2026-02-12T05:13:26.913Z",
+                                      "updatedAt":  "2026-02-12T05:13:26.913Z",
+                                      "inventoryLevels":  [
+                                                              {
+                                                                  "id":  "cmlj06o73000gkohyhx0z0jmo",
+                                                                  "variantId":  "cmlj06ni9000fkohy9z84j49b",
+                                                                  "locationId":  "cmlj03vsg000dswhyv6rplt31",
+                                                                  "available":  10,
+                                                                  "onHand":  10,
+                                                                  "committed":  0,
+                                                                  "unavailable":  0,
+                                                                  "updatedAt":  "2026-02-12T05:13:27.807Z",
+                                                                  "location":  {
+                                                                                   "id":  "cmlj03vsg000dswhyv6rplt31",
+                                                                                   "name":  "Default",
+                                                                                   "address":  null,
+                                                                                   "createdAt":  "2026-02-12T05:11:17.680Z",
+                                                                                   "updatedAt":  "2026-02-12T05:11:17.680Z"
+                                                                               }
+                                                              }
+                                                          ],
+                                      "image":  null,
+                                      "metafields":  [
+
+                                                     ]
+                                  },
+                                  {
+                                      "id":  "cmlj06oih000hkohyhblexlw7",
+                                      "productId":  "cmlj06ftb0000kohy9ybagxly",
+                                      "title":  "XL / White",
+                                      "position":  7,
+                                      "sku":  "KNIT-XL-WHITE",
+                                      "barcode":  null,
+                                      "price":  "1399",
+                                      "compareAtPrice":  "1699",
+                                      "costPerItem":  null,
+                                      "unitPrice":  null,
+                                      "unitPriceMeasurement":  null,
+                                      "taxable":  true,
+                                      "trackInventory":  true,
+                                      "inventoryPolicy":  "DENY",
+                                      "requiresShipping":  true,
+                                      "weight":  null,
+                                      "weightUnit":  null,
+                                      "originCountryCode":  null,
+                                      "hsCode":  null,
+                                      "optionValues":  {
+                                                           "Size":  "XL",
+                                                           "Color":  "White"
+                                                       },
+                                      "imageId":  null,
+                                      "createdAt":  "2026-02-12T05:13:28.217Z",
+                                      "updatedAt":  "2026-02-12T05:13:28.217Z",
+                                      "inventoryLevels":  [
+                                                              {
+                                                                  "id":  "cmlj06p2d000ikohy8gvfeveh",
+                                                                  "variantId":  "cmlj06oih000hkohyhblexlw7",
+                                                                  "locationId":  "cmlj03vsg000dswhyv6rplt31",
+                                                                  "available":  10,
+                                                                  "onHand":  10,
+                                                                  "committed":  0,
+                                                                  "unavailable":  0,
+                                                                  "updatedAt":  "2026-02-12T05:13:28.933Z",
+                                                                  "location":  {
+                                                                                   "id":  "cmlj03vsg000dswhyv6rplt31",
+                                                                                   "name":  "Default",
+                                                                                   "address":  null,
+                                                                                   "createdAt":  "2026-02-12T05:11:17.680Z",
+                                                                                   "updatedAt":  "2026-02-12T05:11:17.680Z"
+                                                                               }
+                                                              }
+                                                          ],
+                                      "image":  null,
+                                      "metafields":  [
+
+                                                     ]
+                                  },
+                                  {
+                                      "id":  "cmlj06pbd000jkohy3ffh5f09",
+                                      "productId":  "cmlj06ftb0000kohy9ybagxly",
+                                      "title":  "XL / Blue",
+                                      "position":  8,
+                                      "sku":  "KNIT-XL-BLUE",
+                                      "barcode":  null,
+                                      "price":  "1399",
+                                      "compareAtPrice":  "1699",
+                                      "costPerItem":  null,
+                                      "unitPrice":  null,
+                                      "unitPriceMeasurement":  null,
+                                      "taxable":  true,
+                                      "trackInventory":  true,
+                                      "inventoryPolicy":  "DENY",
+                                      "requiresShipping":  true,
+                                      "weight":  null,
+                                      "weightUnit":  null,
+                                      "originCountryCode":  null,
+                                      "hsCode":  null,
+                                      "optionValues":  {
+                                                           "Size":  "XL",
+                                                           "Color":  "Blue"
+                                                       },
+                                      "imageId":  null,
+                                      "createdAt":  "2026-02-12T05:13:29.257Z",
+                                      "updatedAt":  "2026-02-12T05:13:29.257Z",
+                                      "inventoryLevels":  [
+                                                              {
+                                                                  "id":  "cmlj06pxp000kkohyn6b8j6bh",
+                                                                  "variantId":  "cmlj06pbd000jkohy3ffh5f09",
+                                                                  "locationId":  "cmlj03vsg000dswhyv6rplt31",
+                                                                  "available":  10,
+                                                                  "onHand":  10,
+                                                                  "committed":  0,
+                                                                  "unavailable":  0,
+                                                                  "updatedAt":  "2026-02-12T05:13:30.061Z",
+                                                                  "location":  {
+                                                                                   "id":  "cmlj03vsg000dswhyv6rplt31",
+                                                                                   "name":  "Default",
+                                                                                   "address":  null,
+                                                                                   "createdAt":  "2026-02-12T05:11:17.680Z",
+                                                                                   "updatedAt":  "2026-02-12T05:11:17.680Z"
+                                                                               }
+                                                              }
+                                                          ],
+                                      "image":  null,
+                                      "metafields":  [
+
+                                                     ]
+                                  }
+                              ],
+                 "metafields":  [
+
+                                ],
+                 "reviews":  [
+
+                             ],
+                 "_count":  {
+                                "reviews":  0
+                            },
+                 "averageRating":  0,
+                 "reviewCount":  0
+             }
+}
