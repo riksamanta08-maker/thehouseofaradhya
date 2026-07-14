@@ -113,6 +113,15 @@ const parseServiceAccountFromFields = () => {
 
   if (!projectId || !clientEmail || !privateKey) return null;
 
+
+console.log("========== FIREBASE DEBUG ==========");
+console.log("Project:", projectId);
+console.log("Email:", clientEmail);
+console.log("Private key length:", privateKey.length);
+console.log("First line:", privateKey.split("\n")[0]);
+console.log("Last line:", privateKey.split("\n").at(-1));
+console.log("====================================");
+  
   return {
     projectId,
     clientEmail,
