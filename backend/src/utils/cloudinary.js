@@ -6,6 +6,12 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
+console.log("=== CLOUDINARY DEBUG ===");
+console.log("Cloud Name:", process.env.CLOUDINARY_CLOUD_NAME);
+console.log("API Key:", process.env.CLOUDINARY_API_KEY);
+console.log("Has Secret:", !!process.env.CLOUDINARY_API_SECRET);
+console.log("========================");
+
 /**
  * Upload a buffer to Cloudinary.
  * @param {Buffer} buffer – file contents
