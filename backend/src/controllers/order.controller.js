@@ -1340,21 +1340,14 @@ exports.listOrders = async (req, res, next) => {
       prisma.order.findMany({
         where,
         include: {
-          user: { select: { id: true, email: true, name: true } },
-          requests: {
-            orderBy: { createdAt: "desc" },
-            select: {
-              id: true,
-              type: true,
-              status: true,
-              items: true,
-              reason: true,
-              comments: true,
-              exchangePreference: true,
-              createdAt: true,
-            },
-          },
-        },
+  user: {
+    select: {
+      id: true,
+      email: true,
+      name: true,
+    },
+  },
+},
         orderBy: { createdAt: "desc" },
         take,
         skip,
