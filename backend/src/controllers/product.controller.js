@@ -684,16 +684,34 @@ const toProductResponse = (product) => {
       : 0;
 
   return {
-    ...rest,
-    externalNumericId: productNumericId,
-    product_id: productNumericId,
-    variants: Array.isArray(variants)
-      ? variants.map((variant) => toVariantResponse(variant, productNumericId))
-      : variants,
-    collections: mapCollections(product),
-    averageRating,
-    reviewCount,
-  };
+  ...rest,
+  externalNumericId: productNumericId,
+  product_id: productNumericId,
+
+  featuredImage: product.media?.[0]
+    ? {
+        url: product.media[0].url,
+        alt: product.media[0].alt,
+      }
+    : null,
+
+  images: Array.isArray(product.media)
+    ? product.media.map((m) => ({
+        url: m.url,
+        alt: m.alt,
+      }))
+    : [],
+
+  img: product.media?.[0]?.url || null,
+
+  variants: Array.isArray(variants)
+    ? variants.map((variant) => toVariantResponse(variant, productNumericId))
+    : variants,
+
+  collections: mapCollections(product),
+  averageRating,
+  reviewCount,
+};
 };
 
 const normalizeMetaToken = (value) => String(value ?? '').trim().toLowerCase();
