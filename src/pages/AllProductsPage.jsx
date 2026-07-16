@@ -701,10 +701,20 @@ const AllProductsPage = ({ initialCategory = 'all' }) => {
     isShowcaseCollectionMode,
   ]);
 
-  const sortedProducts = useMemo(
-    () => sortProducts(filteredProducts, sortBy, selectedSkintoneKey, selectedOccasionKey).map(toProductCard).filter(Boolean),
-    [filteredProducts, sortBy, selectedSkintoneKey, selectedOccasionKey],
-  );
+  const sortedProducts = useMemo(() => {
+  const data = sortProducts(
+    filteredProducts,
+    sortBy,
+    selectedSkintoneKey,
+    selectedOccasionKey
+  )
+    .map(toProductCard)
+    .filter(Boolean);
+
+  console.log("Sorted Products:", data);
+
+  return data;
+}, [filteredProducts, sortBy, selectedSkintoneKey, selectedOccasionKey]);
 
   const shouldGroupBySkintone = false;
   const groupedProducts = useMemo(() => {
