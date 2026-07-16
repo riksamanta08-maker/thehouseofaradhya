@@ -160,7 +160,17 @@ const collectionCompactSelect = {
           category: true,
           tags: true,
           media: true,
-          variants: true,
+          variants: {
+  select: {
+    id: true,
+    externalNumericId: true,
+    title: true,
+    price: true,
+    compareAtPrice: true,
+    sku: true,
+    optionValues: true,
+  },
+},
         },
       },
     },
@@ -302,7 +312,15 @@ exports.getCollectionBySlug = async (req, res, next) => {
       });
     }
     res.set('Cache-Control', 'public, s-maxage=3600, stale-while-revalidate=86400');
-    return sendSuccess(res, collection);
+
+    const safeCollection = JSON.parse(
+  JSON.stringify(
+    collection,
+    (_, value) => (typeof value === 'bigint' ? Number(value) : value)
+  )
+);
+
+    return sendSuccess(res, safeCollection);
   } catch (error) {
     return next(error);
   }
