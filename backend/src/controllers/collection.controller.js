@@ -145,7 +145,28 @@ const collectionDetailSelect = {
   },
 };
 
-const collectionCompactSelect = collectionListSelect;
+const collectionCompactSelect = {
+  ...collectionListSelect,
+  products: {
+    select: {
+      position: true,
+      product: {
+        select: {
+          id: true,
+          title: true,
+          handle: true,
+          status: true,
+          vendor: true,
+          category: true,
+          tags: true,
+          media: true,
+          variants: true,
+        },
+      },
+    },
+    orderBy: { position: 'asc' },
+  },
+};
 
 const resolveParentId = async (prisma, payload) => {
   if (payload.parentId !== undefined) return payload.parentId;

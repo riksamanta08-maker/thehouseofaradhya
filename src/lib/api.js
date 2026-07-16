@@ -781,19 +781,24 @@ export const fetchCollections = async (limit = 8) => {
 
 const COLLECTION_PRODUCT_LIMIT = 200;
 
-export const fetchCollectionByHandle = async (handle, limit = COLLECTION_PRODUCT_LIMIT) => {
+export const fetchCollectionByHandle = async (handle) => {
   if (!handle) return null;
+
   const payload = await request(
     `/collections/slug/${encodeURIComponent(handle)}${buildQuery({ include: 'compact' })}`,
   );
+
   const collection = normalizeCollection(unwrap(payload));
-  const products = await fetchProductsFromCollection(handle, limit);
+
+  const products = Array.isArray(collection?.products)
+  ? collection.products.map(mapProduct).filter(Boolean)
+  : [];
+
   return {
     ...collection,
     products,
   };
 };
-
 export const fetchProductsFromCollection = async (handle, limit = COLLECTION_PRODUCT_LIMIT) => {
   if (!handle) return [];
   const payload = await request(
