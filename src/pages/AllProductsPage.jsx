@@ -506,8 +506,8 @@ const AllProductsPage = ({ initialCategory = 'all' }) => {
       try {
         // Construct target handle based on showcase collection mode or activeCategory
         const targetHandle = isShowcaseCollectionMode
-          ? `${selectedSkintoneKey}-skin-${selectedOccasionKey === 'casual' ? 'date' : selectedOccasionKey === 'formal' ? 'office' : 'puja'}-wear`
-          : activeCategory;
+  ? `${selectedSkintoneKey}-skintone-${selectedOccasionKey}-wear`
+  : activeCategory;
 
         // Step 1: Try loading the primary target collection
         try {
