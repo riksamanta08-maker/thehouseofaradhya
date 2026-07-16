@@ -700,6 +700,10 @@ export const getProductImageUrl = (product) =>
 
 export function toProductCard(product) {
   if (!product) return null;
+
+  console.log("RAW PRODUCT", product);
+
+  
   const image =
     product.featuredImage?.url ?? product.images?.[0]?.url ?? undefined;
   const imageList = Array.from(
