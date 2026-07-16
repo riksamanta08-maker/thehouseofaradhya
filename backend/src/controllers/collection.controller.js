@@ -159,15 +159,7 @@ const collectionCompactSelect = {
           vendor: true,
           category: true,
           tags: true,
-          
-          media: {
-  select: {
-    url: true,
-    alt: true,
-    type: true,
-    position: true,
-  },
-},
+          media: true,
           variants: {
   select: {
     id: true,

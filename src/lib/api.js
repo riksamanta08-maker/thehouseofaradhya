@@ -317,36 +317,21 @@ const normalizeCollection = (collection) => {
     collection.rules && typeof collection.rules === 'object'
       ? collection.rules
       : null;
-  const normalizeCollection = (collection) => {
-  if (!collection) return null;
-
-  const image = collection.imageUrl
-    ? { url: collection.imageUrl, alt: collection.title }
-    : null;
-
-  const rules =
-    collection.rules && typeof collection.rules === 'object'
-      ? collection.rules
-      : null;
-
   const products = Array.isArray(collection.products)
     ? collection.products
-        .map((entry) => entry?.product || entry)
-        .filter(Boolean)
+      .map((entry) => entry?.product || entry)
+      .map((product) => {
+        if (!product?.id) return null;
+        return {
+          id: product.id,
+          title: product.title || '',
+          handle: product.handle || '',
+          status: product.status || '',
+          vendor: product.vendor || '',
+        };
+      })
+      .filter(Boolean)
     : [];
-
-  return {
-    id: collection.id,
-    handle: collection.handle,
-    title: collection.title,
-    description: collection.descriptionHtml || '',
-    image,
-    parentId: collection.parentId ?? null,
-    count: collection._count?.products ?? null,
-    rules,
-    products,
-  };
-};
   return {
     id: collection.id,
     handle: collection.handle,
@@ -718,16 +703,16 @@ export function toProductCard(product) {
 
   console.log("RAW PRODUCT", product);
 
-
-  const mediaImages = Array.isArray(product.media)
-  ? product.media
-      .filter((m) => m?.type === "IMAGE")
-      .sort((a, b) => (a.position ?? 999) - (b.position ?? 999))
-  : [];
-
-const image = mediaImages[0]?.url;
-
-const imageList = mediaImages.map((m) => m.url);
+  
+  const image =
+    product.featuredImage?.url ?? product.images?.[0]?.url ?? undefined;
+  const imageList = Array.from(
+    new Set(
+      [image, ...(product.images || []).map((img) => img?.url)]
+        .map((url) => (url ? String(url).trim() : ''))
+        .filter(Boolean),
+    ),
+  );
   const secondaryImage = imageList.find((url) => url !== image) ?? null;
   const currency = product.currencyCode || DEFAULT_CURRENCY;
   return {
