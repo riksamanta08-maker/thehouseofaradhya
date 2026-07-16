@@ -841,7 +841,15 @@ const ProductDetails = () => {
     selectedColor,
   ]);
 
-  const canAddCurrentProduct = Boolean(product?.handle && currentAvailability?.inStock);
+  const isAvailabilityLoading =
+  hasSizes &&
+  !primarySelectedSize &&
+  sizeOptions.length > 0;
+
+const canAddCurrentProduct =
+  isAvailabilityLoading
+    ? true
+    : Boolean(product?.handle && currentAvailability?.inStock);
 
   const toggleAccordion = (key) =>
     setOpenAccordion((current) => (current === key ? null : key));
@@ -1720,13 +1728,17 @@ const ProductDetails = () => {
             )}
 
             {/* Desktop Add to Bag - Hidden on Mobile, rendered as sticky footer instead */}
-            <button
-              onClick={handleAddToCart}
-              disabled={!hasComboItems && !canAddCurrentProduct}
-              className="hidden lg:block w-full bg-black text-white font-bold text-sm py-4 uppercase tracking-widest hover:bg-gray-900 transition-colors mb-6 disabled:cursor-not-allowed disabled:bg-gray-300 disabled:text-gray-500"
-            >
-              {!hasComboItems && !canAddCurrentProduct ? 'Out of Stock' : 'Add to Bag'}
-            </button>
+           <button
+  onClick={handleAddToCart}
+  disabled={!isAvailabilityLoading && !hasComboItems && !canAddCurrentProduct}
+  className="hidden lg:block w-full bg-black text-white font-bold text-sm py-4 uppercase tracking-widest hover:bg-gray-900 transition-colors mb-6 disabled:cursor-not-allowed disabled:bg-gray-300 disabled:text-gray-500"
+>
+  {isAvailabilityLoading
+    ? 'Loading...'
+    : !hasComboItems && !canAddCurrentProduct
+      ? 'Out of Stock'
+      : 'Add to Bag'}
+</button>
 
 
 
@@ -2108,14 +2120,18 @@ const ProductDetails = () => {
 
       <div className="fixed bottom-[48px] left-0 right-0 z-40 bg-white/90 backdrop-blur-md px-4 pb-3 pt-3 flex items-center justify-center border-t border-gray-100 shadow-[0_-8px_20px_rgba(0,0,0,0.06)] lg:hidden">
         <button
-          onClick={handleAddToCart}
-          disabled={!hasComboItems && !canAddCurrentProduct}
-          className="flex h-12 w-[90%] md:w-[60%] lg:w-full max-w-sm items-center justify-center rounded-full bg-black text-white shadow-lg transition-transform active:scale-[0.98] hover:bg-gray-900 disabled:cursor-not-allowed disabled:bg-gray-300 disabled:text-gray-500"
-        >
-          <span className="text-sm font-bold uppercase tracking-[0.15em]">
-            {!hasComboItems && !canAddCurrentProduct ? 'Out of Stock' : 'Add to Bag'}
-          </span>
-        </button>
+  onClick={handleAddToCart}
+  disabled={!isAvailabilityLoading && !hasComboItems && !canAddCurrentProduct}
+  className="flex h-12 w-[90%] md:w-[60%] lg:w-full max-w-sm items-center justify-center rounded-full bg-black text-white shadow-lg transition-transform active:scale-[0.98] hover:bg-gray-900 disabled:cursor-not-allowed disabled:bg-gray-300 disabled:text-gray-500"
+>
+  <span className="text-sm font-bold uppercase tracking-[0.15em]">
+    {isAvailabilityLoading
+      ? 'Loading...'
+      : !hasComboItems && !canAddCurrentProduct
+        ? 'Out of Stock'
+        : 'Add to Bag'}
+  </span>
+</button>
       </div>
 
     </div>
