@@ -29,13 +29,6 @@ const {
   badge,
 } = item || {};
 
-console.log("========== PRODUCT ==========");
-console.log("Title:", title);
-console.log("featuredImage:", featuredImage);
-console.log("img:", img);
-console.log("images:", images);
-console.log("media:", item?.media);
-console.log("Full Item:", item);
 
   const { toggleItem, isWishlisted } = useWishlist();
   const { notify } = useNotifications();
@@ -85,16 +78,7 @@ console.log("Full Item:", item);
       ? imageList[activeImageIndex]
       : imageList[0] || img || featuredImage?.url;
 
-      console.log("IMAGE DEBUG", {
-  title,
-  imageUrl,
-  img,
-  featuredImage,
-  images,
-  imageList,
-});
-
-
+   
   const imageAlt =
     featuredImage?.alt ||
     featuredImage?.altText ||
