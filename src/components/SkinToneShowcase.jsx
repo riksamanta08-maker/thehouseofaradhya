@@ -142,17 +142,14 @@ export default function SkinToneShowcase() {
         let isMounted = true;
 
         async function fetchAllShowcaseCollections() {
-            const handles = [
-                'fair-skin-date-wear',
-                'fair-skin-office-wear',
-                'fair-skin-puja-wear',
-                'neutral-skin-date-wear',
-                'neutral-skin-office-wear',
-                'neutral-skin-puja-wear',
-                'dark-skin-date-wear',
-                'dark-skin-office-wear',
-                'dark-skin-puja-wear',
-            ];
+           const handles = [
+    'fair-skintone-casual-wear',
+    'fair-skintone-formal-wear',
+    'neutral-skintone-casual-wear',
+    'neutral-skintone-formal-wear',
+    'dark-skintone-casual-wear',
+    'dark-skintone-formal-wear',
+];
 
             const results = {};
             await Promise.all(
@@ -186,10 +183,7 @@ export default function SkinToneShowcase() {
             const skinOccasions = OCCASIONS.map((occasion) => {
                 // Map the storefront canonical occasion ID to the legacy database collection occasion segment
                 // casual -> date, formal -> office, ethnic -> puja
-                const handleOccasion = occasion.id === 'casual' ? 'date'
-                                     : occasion.id === 'formal' ? 'office'
-                                     : 'puja';
-                const collectionHandle = `${skin.id}-skin-${handleOccasion}-wear`;
+                const collectionHandle = `${skin.id}-skintone-${occasion.id}-wear`;
                 const colProds = collectionProducts[collectionHandle] || [];
 
                 // 1. Try to find a combo/bundle product in the curated database collection (respects manual sorting)
