@@ -84,6 +84,17 @@ console.log("Full Item:", item);
     hasScroller && imageList[activeImageIndex]
       ? imageList[activeImageIndex]
       : imageList[0] || img || featuredImage?.url;
+
+      console.log("IMAGE DEBUG", {
+  title,
+  imageUrl,
+  img,
+  featuredImage,
+  images,
+  imageList,
+});
+
+
   const imageAlt =
     featuredImage?.alt ||
     featuredImage?.altText ||
