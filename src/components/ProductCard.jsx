@@ -16,18 +16,26 @@ const formatAmount = (amount, currency = 'INR') => {
 };
 
 const ProductCard = ({ item, enableImageScroller = false }) => {
-  const {
-    handle,
-    title,
-    featuredImage,
-    price,
-    compareAtPrice,
-    vendor,
-    img,
-    images,
-    hoverImg,
-    badge,
-  } = item || {};
+const {
+  handle,
+  title,
+  featuredImage,
+  price,
+  compareAtPrice,
+  vendor,
+  img,
+  images,
+  hoverImg,
+  badge,
+} = item || {};
+
+console.log("========== PRODUCT ==========");
+console.log("Title:", title);
+console.log("featuredImage:", featuredImage);
+console.log("img:", img);
+console.log("images:", images);
+console.log("media:", item?.media);
+console.log("Full Item:", item);
 
   const { toggleItem, isWishlisted } = useWishlist();
   const { notify } = useNotifications();
