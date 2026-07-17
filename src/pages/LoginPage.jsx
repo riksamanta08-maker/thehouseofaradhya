@@ -170,21 +170,27 @@ const LoginPage = () => {
                 otpRefs.current[0]?.focus();
             }, 300);
         } catch (err) {
-            console.error('Error sending OTP', err);
-            setLocalError(getPhoneAuthErrorMessage(err));
-            
-            // Reset recaptcha verifier
-            if (window.recaptchaVerifier) {
-                try {
-                    window.recaptchaVerifier.clear();
-                    window.recaptchaVerifier = null;
-                } catch (e) {
-                    console.error(e);
-                }
-            }
-        } finally {
-            setLocalLoading(false);
+    console.error("FULL FIREBASE ERROR:", err);
+
+    alert(JSON.stringify({
+        code: err?.code,
+        message: err?.message,
+        name: err?.name,
+    }, null, 2));
+
+    setLocalError(getPhoneAuthErrorMessage(err));
+
+    if (window.recaptchaVerifier) {
+        try {
+            window.recaptchaVerifier.clear();
+            window.recaptchaVerifier = null;
+        } catch (e) {
+            console.error(e);
         }
+    }
+} finally {
+    setLocalLoading(false);
+}
     };
 
     // Verify OTP and complete login

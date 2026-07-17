@@ -508,17 +508,23 @@ const ProductDetails = () => {
       setError(null);
 
       const local = getProduct(slug);
-      if (local && !cancelled) {
-        setProduct(local);
-        setLoading(false);
-      }
+     // if (local && !cancelled) {
+     //   setProduct(local);
+      //  setLoading(false);
+      //}
 
       try {
         const fetched = await fetchProductByHandle(slug);
+
+        console.log("FETCHED PRODUCT", fetched);
+console.log("COMBO ITEMS", fetched?.comboItems);
+console.log("COMBO LENGTH", fetched?.comboItems?.length);
+
+
         if (!cancelled) {
           if (fetched) {
             setProduct(fetched);
-            setLoading(false);
+            
           } else {
             if (!local) setError('Product not found');
           }
@@ -527,8 +533,10 @@ const ProductDetails = () => {
         console.error(`Failed to load product "${slug}"`, err);
         if (!cancelled && !local) setError('Product unavailable right now.');
       } finally {
-        if (!cancelled && !local) setLoading(false);
-      }
+  if (!cancelled) {
+    setLoading(false);
+  }
+}
     }
 
     loadProduct();
@@ -1742,15 +1750,35 @@ const canAddCurrentProduct =
 
 
 
-            {hasComboItems && (
-              <FrequentlyBoughtTogether
-                title="Choose items in this combo"
-                subtitle={comboSelectionLabel}
-                products={comboItems}
-                selectedHandles={selectedComboItems}
-                onSelectionChange={setSelectedComboItems}
-              />
-            )}
+            {loading ? (
+  <div className="mb-6 animate-pulse">
+    <div className="h-5 w-48 rounded bg-gray-200 mb-5"></div>
+
+    {[1, 2, 3].map((item) => (
+      <div
+        key={item}
+        className="mb-4 flex items-center gap-4 rounded-xl border border-gray-200 p-4"
+      >
+        <div className="h-16 w-16 rounded bg-gray-200"></div>
+
+        <div className="flex-1">
+          <div className="mb-2 h-4 w-40 rounded bg-gray-200"></div>
+          <div className="h-4 w-20 rounded bg-gray-200"></div>
+        </div>
+      </div>
+    ))}
+  </div>
+) : (
+  hasComboItems && (
+    <FrequentlyBoughtTogether
+      title="Choose items in this combo"
+      subtitle={comboSelectionLabel}
+      products={comboItems}
+      selectedHandles={selectedComboItems}
+      onSelectionChange={setSelectedComboItems}
+    />
+  )
+)}
 
             {isBundleLikeProduct && !hasComboItems ? (
               <div className="mb-6 rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-900">
